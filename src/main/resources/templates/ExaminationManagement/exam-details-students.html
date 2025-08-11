@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Exam Forms'">Exam Forms</title>
+</head>
+<body>
+
+<!-- Replace the content section -->
+<div th:replace="layout/base.html">
+    <div th:fragment="content">
+        <h1 class="mb-4">Exam Forms</h1>
+
+        <!-- Exam Form List -->
+        <h2>Available Exam Forms</h2>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Exam Form Name</th>
+                <th>Form Type</th>
+                <th>Course</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="examForm : ${examForm}">
+                <td th:text="${examForm.examFormName}"></td>
+                <td th:text="${examForm.formType}"></td>
+                <td th:text="${examForm.course.courseName}"></td>
+                <td th:text="${#dates.format(examForm.startDate, 'yyyy-MM-dd')}"></td>
+                <td th:text="${#dates.format(examForm.endDate, 'yyyy-MM-dd')}"></td>
+                <td th:if="${!examFromFileUP}">
+                    <a th:href="@{/students/exam/{id}(id=${student.id})}" class="btn btn-primary">Submit Exam Form</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

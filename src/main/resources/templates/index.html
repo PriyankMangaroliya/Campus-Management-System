@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Custom Page Title'">Custom Page Title</title>
+</head>
+<body>
+
+<!-- Replace the content section -->
+<div th:replace="layout/base.html">
+    <div th:fragment="content">
+        <h1 class="page-title">Dashboard Overview</h1>
+        <p>Welcome to the Dashboard. Here you can manage your data.</p>
+    </div>
+</div>
+
+</body>
+</html>
